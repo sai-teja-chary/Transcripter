@@ -14,7 +14,17 @@ const __dirname = path.dirname(__filename);
 
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
+app.get('/api/health', (_req, res) => {
+  res.json({
+    ok: true,
+    provider: process.env.STT_PROVIDER || 'mock'
+  });
+});
+
+app.use('/api/transcriptions', transcriptionRoutes);
+app.use(errorHandler);
 
 await connectDatabase();
 
