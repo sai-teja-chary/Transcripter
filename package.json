@@ -1,0 +1,21 @@
+{
+  "name": "transcripter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MERN speech-to-text transcription app with audio upload, recording, transcription history, and MongoDB persistence.",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
+    "dev:client": "npm run dev --workspace client",
+    "dev:server": "npm run dev --workspace server",
+    "install:all": "npm install --workspaces",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
